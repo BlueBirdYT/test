@@ -456,14 +456,12 @@ async def avatar(ctx, user: discord.Member=None):
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         embed = discord.Embed(title=f'Avatar', description='Avatar is profile picture of a user in discord', color = discord.Color((r << 16) + (g << 8) + b))
         embed.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
-        embed.set_thumbnail(url='https://cdn.discordapp.com/avatars/487552378497662978/6efb04e0226c9f55eb4c785ac4488686.webp?size=1024')
         embed.set_image(url = ctx.message.author.avatar_url)
         await client.say(embed=embed)
     else:
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         embed = discord.Embed(title=f'Avatar', description='Avatar is profile picture of a user in discord', color = discord.Color((r << 16) + (g << 8) + b))
         embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
-        embed.set_thumbnail(url='https://cdn.discordapp.com/avatars/487552378497662978/6efb04e0226c9f55eb4c785ac4488686.webp?size=1024')
         embed.set_image(url = user.avatar_url)
         await client.say(embed=embed)
 
@@ -816,15 +814,7 @@ async def rolldice(ctx):
     await client.send_typing(ctx.message.channel)
     await client.say(embed=em)
 
-@client.command(pass_context = True)
-async def invite():
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_image(url="https://cdn.discordapp.com/avatars/487552378497662978/6efb04e0226c9f55eb4c785ac4488686.webp?size=1024")
-    embed.add_field(name = 'Link to invite me', value='https://discordapp.com/api/oauth2/authorize?client_id=487552378497662978&permissions=8&scope=bot')
-    embed.add_field(name = 'bot info', value='NinjaBot is a simple bot easy and fun to use we will do updates and keep improving the bot')
-    await client.say(embed=embed)
-    await client.delete_message(ctx.message)
+
 
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
